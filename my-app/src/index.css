@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: dimgray;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,7 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -64,4 +63,15 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 0;
+    margin: 5px 15px;
+}
+.nav-link:hover {
+    color: lightblue;
+    text-decoration: underline;
+    font-weight: bold;
 }
