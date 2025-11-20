@@ -1,5 +1,6 @@
-import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
+import SearchBar from "./SearchBar";
 
 export default function Header () {
    const [open, setOpen] = useState(false);
@@ -14,6 +15,8 @@ export default function Header () {
             <div style = {styles.bar}></div>
         </button>
         )}
+
+        <SearchBar onSearch = {(text) => console.log(text)} />
 
         {open && (
             <div style = {styles.menu}>
