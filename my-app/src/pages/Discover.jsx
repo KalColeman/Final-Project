@@ -39,25 +39,36 @@ export default function Discover({ searchQuery = "" }) {
               `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealSummary.idMeal}`
             );
             const detailsJson = await detailsResponse.json();
+
             if (detailsJson.meals && detailsJson.meals[0]) {
               const fullMeal = mealToRecipe(detailsJson.meals[0]);
+
               const hasAllIngredients = pantry.every((item) =>
                 fullMeal.ingredients.some((ing) =>
                   ing.toLowerCase().includes(item.toLowerCase())
                 )
               );
+
               if (hasAllIngredients) results.push(fullMeal);
             }
-            if (results.length >= 8) break; // stop after 8 recipes
+
+            if (results.length >= 8) break;
           }
         }
-      } else if (searchQuery.trim() !== "") {
+      }
+
+      else if (searchQuery.trim() !== "") {
         const response = await fetch(
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchQuery}`
         );
         const json = await response.json();
-        if (json.meals) results = json.meals.map(mealToRecipe).slice(0, 8);
-      } else {
+
+        if (json.meals) {
+          results = json.meals.map(mealToRecipe).slice(0, 8);
+        }
+      }
+
+      else {
         for (let i = 0; i < 6; i++) {
           const response = await fetch(
             "https://www.themealdb.com/api/json/v1/1/random.php"
@@ -67,11 +78,11 @@ export default function Discover({ searchQuery = "" }) {
         }
       }
 
-      const uniqueResults = results
+      const unique = results
         .filter((v, i, a) => a.findIndex((t) => t.id === v.id) === i)
         .slice(0, 8);
 
-      setRecipes(uniqueResults);
+      setRecipes(unique);
     } catch (err) {
       setError("Couldn't fetch recipes. Please try again.");
     } finally {

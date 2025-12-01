@@ -19,7 +19,11 @@ export default function SearchBar ({onSearch}) {
                 type = "text"
                 placeholder = "Search for recipes"
                 value = {query}
-                onChange = {(e) => setQuery(e.target.value)}
+                onChange = {(e) => {
+                    setQuery(e.target.value);
+                    onSearch(e.target.value);
+                }}
+                
                 style = {styles.input}
             />
         </form>
