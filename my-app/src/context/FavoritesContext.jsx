@@ -17,7 +17,7 @@ export function FavoritesProvider({children}) {
 
     const toggleFavorite = (id) => {
         setFavorites((prev) =>
-             prev.includes(id) ? prev.filter((favID) =>
+            prev.includes(id) ? prev.filter((favID) =>
             favID !== id) : [...prev, id]);
     };
 

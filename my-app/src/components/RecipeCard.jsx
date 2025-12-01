@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteButton from "./FavoriteButton";
+import "./RecipeCard.css"
 
 export default function RecipeCard({recipe, onToggleFavorite}) {
     return (
@@ -48,36 +49,30 @@ const styles = {
         flexDirection: "column",
         margin: "15px auto",
     },
-
     image: {
         width: "100%",
         height: "200px",
         objectFit: "cover",
     },
-
     content: {
         padding: "15px",
     },
-
     title: {
         margin: "0 0 8px 0",
         fontSize: "1.2rem",
         fontWeight: "600",
     },
-    
     description: {
         margin: "0 0 15px 0",
         fontSize: "0.9rem",
         color: "darkgrey",
         lineHeight: "1.2",
     },
-
     actions: {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
     },
-
     viewButton: {
         backgroundColor: "#2b2a2aff",
         color: "white",

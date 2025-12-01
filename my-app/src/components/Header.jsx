@@ -33,9 +33,10 @@ export default function Header () {
                     Pantry
                 </Link>
 
-                <Link className="nav-link" to ="/favorites" onClick = {() => setOpen(false)}>
+                <Link className="nav-link" to = "/favorites" onClick = {() => setOpen(false)}>
                     Favorites
                 </Link>
+                
             </div>
         )}
         </nav>
