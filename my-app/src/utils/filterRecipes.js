@@ -1,30 +1,23 @@
-export default function filterRecipes(recipes, options = {}) {
-    if (!recipes || !Array.isArray(recipes)) return [];
+export default function filterRecipes(recipes, pantry = [], searchQuery = "") {
+    if (!recipes) return [];
 
-    const {
-        search = "",
-        pantry = [],
-        requirePantry = false,
-    } = options;
+    return recipes.filter((recipe) => {
+        if (!recipe) return false;
 
-    return recipes.filter(recipe => {
-        if (search.trim() !== "") {
-            const text = search.toLowerCase();
-            const matchesText = 
-            recipe.title?.toLowerCase().includes(text) ||
-            recipe.description?.toLowerCase().includes(text);
-
-            if (!matchesText) return false;
-        }
-    
-        if (requirePantry && pantry.length > 0) {
-            const ingredients = recipe.ingredients || [];
-
-            const hasAllIngredients = pantry.every(item => 
-                ingredients.includes(item)
+        // Pantry filtering
+        if (pantry.length > 0) {
+            const hasAllIngredients = pantry.every((item) =>
+                recipe.ingredients.some((ingredient) =>
+                    ingredient.toLowerCase().includes(item.toLowerCase())
+                )
             );
-
             if (!hasAllIngredients) return false;
+        }
+
+        // Search filtering
+        if (searchQuery && searchQuery.trim() !== "") {
+            const text = searchQuery.toLowerCase();
+            if (!recipe.title.toLowerCase().includes(text)) return false;
         }
 
         return true;

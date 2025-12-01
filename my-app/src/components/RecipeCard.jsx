@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FavoriteButton from "./FavoriteButton";
-import "./RecipeCard.css"
 
 export default function RecipeCard({recipe, onToggleFavorite}) {
     return (

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import usePantry from "../hooks/usePantry";
 
 export default function Pantry () {
-    const {pantry, addToPantry, removeFromPantry, clearPantry} = usePantry();
+    const {pantry, addItem, removeItem, clearPantry} = usePantry();
     const [input, setInput] = useState("");
 
     function handleAdd(e) {
@@ -11,7 +11,7 @@ export default function Pantry () {
         const trimmed = input.trim();
         if (trimmed === "") return;
 
-        addToPantry(trimmed);
+        addItem(trimmed);
         setInput("");
     }
 
@@ -41,7 +41,7 @@ export default function Pantry () {
                             <span>{item}</span>
                             <button
                                 style = {styles.removeButton}
-                                onClick = {() => removeFromPantry(item)}
+                                onClick = {() => removeItem(item)}
                             >
                                 Remove
                             </button>

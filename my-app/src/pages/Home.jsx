@@ -61,11 +61,13 @@ const styles = {
         fontSize: "1.4rem",
         marginBottom: "10px",
         fontWeight: "600",
+        color: "black",
     },
     cardText: {
         fontSize: "1rem",
         opacity: 0.8,
         marginBottom: "20px",
+        color: "black",
     },
     button: {
         display: "inline-block",
